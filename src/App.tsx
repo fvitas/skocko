@@ -5,6 +5,7 @@ import { SymbolIcon } from './components/SymbolIcon'
 import { ResultPanel } from './components/ResultPanel'
 import { SolutionRow } from './components/SolutionRow'
 import { SettingsSheet } from './components/SettingsSheet'
+import { StageShards } from './components/StageShards'
 import { SymbolTray } from './components/SymbolTray'
 import { CODE_LENGTH, MAX_ATTEMPTS, TIMER_SECONDS, evaluateGuess, randomSecret } from './game/logic'
 import type { GameSymbol, Guess } from './game/logic'
@@ -104,7 +105,7 @@ export function App() {
 
   return (
     <div className="relative min-h-dvh overflow-hidden bg-[radial-gradient(120%_80%_at_50%_-10%,#1a47d6,#0e2a8f_55%,#0a1b5e)] font-body text-ink">
-      <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(115deg,transparent_0_90px,rgba(255,255,255,0.045)_90px_140px,transparent_140px_260px)]" />
+      <StageShards />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_100%_at_50%_110%,transparent_55%,rgba(2,6,40,0.45))]" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-[radial-gradient(80%_60%_at_50%_100%,rgba(255,201,60,0.09),transparent_70%)]" />
       <div className="relative mx-auto flex h-dvh max-w-md flex-col">
