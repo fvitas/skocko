@@ -33,6 +33,10 @@
   --animate-peg-in: peg-in 0.3s ease-out backwards;
   --animate-rise: rise 0.35s ease-out backwards;
   --animate-shake: shake 0.4s ease-in-out;
+  --animate-fade-in: fade-in 0.2s ease-out;
+  --animate-fade-out: fade-out 0.15s ease-in forwards;
+  --animate-dialog-in: dialog-in 0.2s ease-out;
+  --animate-dialog-out: dialog-out 0.15s ease-in forwards;
 
   @keyframes pop {
     0% {
@@ -61,6 +65,37 @@
     to {
       opacity: 1;
       transform: translateY(0) scale(1);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+  @keyframes fade-out {
+    to {
+      opacity: 0;
+    }
+  }
+  /* keyframes carry the centering translate — animated transforms replace class transforms */
+  @keyframes dialog-in {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -48%) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  @keyframes dialog-out {
+    from {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: translate(-50%, -48%) scale(0.95);
     }
   }
   @keyframes shake {

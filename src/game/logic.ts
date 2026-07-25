@@ -14,7 +14,9 @@ export type Guess = {
 
 export const CODE_LENGTH = 4
 export const MAX_ATTEMPTS = 6
-export const TIMER_SECONDS = 90
+export const TIMER_OPTIONS = [60, 90, 120] as const
+export type TimerSeconds = (typeof TIMER_OPTIONS)[number]
+export const DEFAULT_TIMER_SECONDS: TimerSeconds = 90
 
 export function randomSecret(): GameSymbol[] {
   return Array.from({ length: CODE_LENGTH }, () => SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)])

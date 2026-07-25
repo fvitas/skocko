@@ -1,4 +1,4 @@
-import { Settings } from 'lucide-react'
+import { Dices, Settings } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { GuessRow } from './components/GuessRow'
 import { SymbolIcon } from './components/SymbolIcon'
@@ -7,8 +7,8 @@ import { SolutionRow } from './components/SolutionRow'
 import { SettingsSheet } from './components/SettingsSheet'
 import { StageShards } from './components/StageShards'
 import { SymbolTray } from './components/SymbolTray'
-import { CODE_LENGTH, MAX_ATTEMPTS, TIMER_SECONDS, evaluateGuess, randomSecret } from './game/logic'
-import type { GameSymbol, Guess } from './game/logic'
+import { CODE_LENGTH, DEFAULT_TIMER_SECONDS, MAX_ATTEMPTS, TIMER_OPTIONS, evaluateGuess, randomSecret } from './game/logic'
+import type { GameSymbol, Guess, TimerSeconds } from './game/logic'
 import { STRINGS } from './i18n'
 import type { Lang } from './i18n'
 
@@ -17,16 +17,21 @@ type GameStatus = 'playing' | 'won' | 'lost' | 'timeout'
 type Settings = {
   lang: Lang
   timerEnabled: boolean
+  timerSeconds: TimerSeconds
 }
 
 const SETTINGS_KEY = 'skocko-settings'
 const TIMER_TICK_MS = 200
 
 function readSettings(): Settings {
-  const fallback: Settings = { lang: 'sr', timerEnabled: false }
+  const fallback: Settings = { lang: 'sr', timerEnabled: false, timerSeconds: DEFAULT_TIMER_SECONDS }
   try {
     const raw = localStorage.getItem(SETTINGS_KEY)
-    return raw ? { ...fallback, ...(JSON.parse(raw) as Partial<Settings>) } : fallback
+    const settings = raw ? { ...fallback, ...(JSON.parse(raw) as Partial<Settings>) } : fallback
+    if (!(TIMER_OPTIONS as readonly number[]).includes(settings.timerSeconds)) {
+      settings.timerSeconds = DEFAULT_TIMER_SECONDS
+    }
+    return settings
   } catch {
     return fallback
   }
@@ -42,7 +47,7 @@ export function App() {
   const [guesses, setGuesses] = useState<Guess[]>([])
   const [current, setCurrent] = useState<GameSymbol[]>([])
   const [status, setStatus] = useState<GameStatus>('playing')
-  const [remainingMs, setRemainingMs] = useState(TIMER_SECONDS * 1_000)
+  const [remainingMs, setRemainingMs] = useState(settings.timerSeconds * 1_000)
   const [shake, setShake] = useState(false)
   const [settingsOpen, setSettingsOpen] = useState(false)
 
@@ -72,7 +77,13 @@ export function App() {
     setGuesses([])
     setCurrent([])
     setStatus('playing')
-    setRemainingMs(TIMER_SECONDS * 1_000)
+    setRemainingMs(settings.timerSeconds * 1_000)
+  }
+
+  // picking a new duration restarts the countdown for the current round
+  function changeTimerSeconds(timerSeconds: TimerSeconds) {
+    updateSettings({ timerSeconds })
+    setRemainingMs(timerSeconds * 1_000)
   }
 
   function pickSymbol(symbol: GameSymbol) {
@@ -101,7 +112,7 @@ export function App() {
     }
   }
 
-  const timerRatio = remainingMs / (TIMER_SECONDS * 1_000)
+  const timerRatio = remainingMs / (settings.timerSeconds * 1_000)
 
   return (
     <div className="relative min-h-dvh overflow-hidden bg-[radial-gradient(120%_80%_at_50%_-10%,#1a47d6,#0e2a8f_55%,#0a1b5e)] font-body text-ink">
@@ -117,14 +128,24 @@ export function App() {
             SKO<span className="text-gold">Č</span>KO
           </span>
         </h1>
-        <button
-          type="button"
-          onPointerDown={() => setSettingsOpen(true)}
-          aria-label={strings.settings}
-          className="grid h-9 w-9 place-items-center rounded-xl border border-cell-edge bg-linear-to-b from-panel-hi to-panel-lo text-ink-dim transition-transform duration-150 active:translate-y-[1px] active:duration-0"
-        >
-          <Settings className="h-4.5 w-4.5" aria-hidden="true" />
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onPointerDown={startNewGame}
+            aria-label={strings.newGame}
+            className="grid h-9 w-9 place-items-center rounded-xl border-[1.5px] border-[#5a7df0]/50 bg-linear-to-b from-[#1d3cae] to-panel-lo text-ink-dim shadow-[0_3px_0_#0a1a5c] transition-transform duration-150 active:translate-y-[2px] active:shadow-none active:duration-0"
+          >
+            <Dices className="h-4.5 w-4.5" aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            onPointerDown={() => setSettingsOpen(true)}
+            aria-label={strings.settings}
+            className="grid h-9 w-9 place-items-center rounded-xl border-[1.5px] border-[#5a7df0]/50 bg-linear-to-b from-[#1d3cae] to-panel-lo text-ink-dim shadow-[0_3px_0_#0a1a5c] transition-transform duration-150 active:translate-y-[2px] active:shadow-none active:duration-0"
+          >
+            <Settings className="h-4.5 w-4.5" aria-hidden="true" />
+          </button>
+        </div>
       </header>
       <p className="z-10 px-4 pb-1 text-[13px] font-bold text-ink-dim">{strings.subtitle}</p>
 
@@ -195,10 +216,12 @@ export function App() {
         open={settingsOpen}
         lang={settings.lang}
         timerEnabled={settings.timerEnabled}
+        timerSeconds={settings.timerSeconds}
         strings={strings}
         onOpenChange={setSettingsOpen}
         onLangChange={(lang) => updateSettings({ lang })}
         onTimerChange={(timerEnabled) => updateSettings({ timerEnabled })}
+        onTimerSecondsChange={changeTimerSeconds}
       />
       </div>
     </div>

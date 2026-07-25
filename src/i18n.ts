@@ -30,7 +30,7 @@ export const STRINGS: Record<Lang, Strings> = {
     solution: 'Rešenje',
     settings: 'Podešavanja',
     timer: 'Tajmer',
-    timerHint: '90 sekundi po igri, kao u emisiji',
+    timerHint: 'Ograničeno vreme po igri, kao u emisiji',
     language: 'Jezik',
     rulesTitle: 'Pravila',
     rules: [
@@ -51,7 +51,7 @@ export const STRINGS: Record<Lang, Strings> = {
     solution: 'Solution',
     settings: 'Settings',
     timer: 'Timer',
-    timerHint: '90 seconds per game, like on the show',
+    timerHint: 'Limited time per game, like on the show',
     language: 'Language',
     rulesTitle: 'How to play',
     rules: [
