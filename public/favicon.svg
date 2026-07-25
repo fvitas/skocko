@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="58 -6 384 350">
+  <defs>
+    <radialGradient id="skocko-head" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#ffde17"/>
+      <stop offset="85%" stop-color="#f2a900"/>
+      <stop offset="100%" stop-color="#d98200"/>
+    </radialGradient>
+    <radialGradient id="skocko-nose" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#ff4d4d"/>
+      <stop offset="100%" stop-color="#b30000"/>
+    </radialGradient>
+  </defs>
+  <path d="M235 125C215 70 160 25 135 5" fill="none" stroke="#0d1b2a" stroke-width="9" stroke-linecap="round"/>
+  <path d="M265 125C285 70 340 25 365 5" fill="none" stroke="#0d1b2a" stroke-width="9" stroke-linecap="round"/>
+  <ellipse cx="250" cy="240" rx="145" ry="95" fill="url(#skocko-head)" stroke="#b77900" stroke-width="4"/>
+  <path d="M150 115C165 80 210 75 225 110" fill="none" stroke="#003366" stroke-width="8" stroke-linecap="round"/>
+  <path d="M350 115C335 80 290 75 275 110" fill="none" stroke="#003366" stroke-width="8" stroke-linecap="round"/>
+  <ellipse cx="190" cy="165" rx="30" ry="45" fill="#fff"/>
+  <ellipse cx="310" cy="165" rx="30" ry="45" fill="#fff"/>
+  <ellipse cx="195" cy="170" rx="16" ry="28" fill="#0f172a"/>
+  <ellipse cx="305" cy="170" rx="16" ry="28" fill="#0f172a"/>
+  <circle cx="188" cy="158" r="5" fill="#fff"/>
+  <circle cx="298" cy="158" r="5" fill="#fff"/>
+  <circle cx="160" cy="170" r="90" fill="none" stroke="#8e24aa" stroke-width="14"/>
+  <circle cx="340" cy="170" r="90" fill="none" stroke="#8e24aa" stroke-width="14"/>
+  <ellipse cx="250" cy="225" rx="28" ry="20" fill="url(#skocko-nose)"/>
+  <path d="M220 270Q250 292 280 270" fill="none" stroke="#0f172a" stroke-width="7" stroke-linecap="round"/>
+</svg>
