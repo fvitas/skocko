@@ -124,11 +124,22 @@ export function App() {
       <div className="relative mx-auto flex h-dvh max-w-md flex-col">
 
       <header className="z-10 flex items-center justify-between px-4 pt-3.5 pb-1">
-        <h1 className="flex items-center gap-2 font-display text-2xl font-bold tracking-wide [text-shadow:0_2px_0_rgba(0,0,0,0.35)]">
-          <SymbolIcon symbol="skocko" className="h-8 w-8 drop-shadow-[0_3px_4px_rgba(0,0,0,0.4)]" />
-          <span>
-            SKO<span className="text-gold">Č</span>KO
+        <h1 aria-label="SKOČKO" className="flex items-center gap-[3px]">
+          <span
+            aria-hidden="true"
+            className="hidden h-7 w-7 place-items-center rounded-lg border-[1.5px] border-cell-edge/70 bg-linear-to-b from-cell-hi to-cell-lo shadow-[0_2px_0_#081444] min-[400px]:grid"
+          >
+            <SymbolIcon symbol="skocko" className="h-5 w-5" />
           </span>
+          {[...'SKOČKO'].map((letter, i) => (
+            <span
+              key={i}
+              aria-hidden="true"
+              className="grid h-7 w-7 place-items-center rounded-lg border-[1.5px] border-cell-edge/70 bg-linear-to-b from-cell-hi to-cell-lo font-display text-[17px] font-bold shadow-[0_2px_0_#081444] [text-shadow:0_2px_0_rgba(0,0,0,0.35)]"
+            >
+              {letter}
+            </span>
+          ))}
         </h1>
         <div className="flex items-center gap-2">
           <button
