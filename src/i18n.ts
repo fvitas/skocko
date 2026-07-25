@@ -43,9 +43,9 @@ export const STRINGS: Record<Lang, Strings> = {
   },
   en: {
     subtitle: 'Guess the combination of 4 symbols',
-    confirm: 'CONFIRM',
-    clear: 'Delete last symbol',
-    clearShort: 'CLEAR',
+    confirm: 'CHECK',
+    clear: 'Undo last symbol',
+    clearShort: 'UNDO',
     newGame: 'NEW GAME',
     winTitle: 'SKOČKO!',
     solution: 'Solution',
