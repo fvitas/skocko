@@ -14,6 +14,13 @@ export type Strings = {
   language: string
   rulesTitle: string
   rules: string[]
+  rulesSymbols: string
+  rulesFeedback: string
+  rulesGotchas: string
+  gotchasIntro: string
+  gotchaSorted: string
+  gotchaOnce: string
+  guessLabel: string
   legendRed: string
   legendYellow: string
   close: string
@@ -34,9 +41,16 @@ export const STRINGS: Record<Lang, Strings> = {
     language: 'Jezik',
     rulesTitle: 'Pravila',
     rules: [
-      'Računar zadaje skrivenu kombinaciju od 4 znaka — znakovi mogu da se ponavljaju.',
+      'Računar zadaje skrivenu kombinaciju od 4 znaka — znakovi mogu da se ponavljaju, a redosled je bitan.',
       'Imaš 6 pokušaja da je pogodiš.',
     ],
+    rulesSymbols: 'Znakovi',
+    rulesFeedback: 'Kružići',
+    rulesGotchas: 'Dobro je znati',
+    gotchasIntro: 'Kružići ti kažu samo koliko je pogodaka — ne i koji su.',
+    gotchaSorted: 'Kružići su sortirani — prvo crveni. Njihov redosled ne otkriva koja su mesta pogođena.',
+    gotchaOnce: 'Svaki znak iz kombinacije računa se samo jednom, čak i ako ga pogodiš više puta.',
+    guessLabel: 'Pokušaj',
     legendRed: 'pogođen znak na pravom mestu',
     legendYellow: 'pogođen znak, pogrešno mesto',
     close: 'Zatvori',
@@ -55,9 +69,16 @@ export const STRINGS: Record<Lang, Strings> = {
     language: 'Language',
     rulesTitle: 'How to play',
     rules: [
-      'The computer sets a hidden combination of 4 symbols — repeats are allowed.',
+      'The computer sets a hidden combination of 4 symbols — repeats are allowed and order matters.',
       'You have 6 attempts to crack it.',
     ],
+    rulesSymbols: 'Symbols',
+    rulesFeedback: 'Pegs',
+    rulesGotchas: 'Good to know',
+    gotchasIntro: 'Pegs only tell you how many symbols you got — not which ones.',
+    gotchaSorted: "Pegs are sorted — reds first. Their order doesn't reveal which positions matched.",
+    gotchaOnce: 'Each symbol in the combination counts only once, even if you guess it multiple times.',
+    guessLabel: 'Guess',
     legendRed: 'right symbol, right position',
     legendYellow: 'right symbol, wrong position',
     close: 'Close',

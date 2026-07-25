@@ -1,9 +1,10 @@
-import { Dices, Settings } from 'lucide-react'
+import { CircleHelp, Dices, Settings } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { GuessRow } from './components/GuessRow'
 import { SymbolIcon } from './components/SymbolIcon'
 import { ResultPanel } from './components/ResultPanel'
 import { SolutionRow } from './components/SolutionRow'
+import { RulesSheet } from './components/RulesSheet'
 import { SettingsSheet } from './components/SettingsSheet'
 import { StageShards } from './components/StageShards'
 import { SymbolTray } from './components/SymbolTray'
@@ -50,6 +51,7 @@ export function App() {
   const [remainingMs, setRemainingMs] = useState(settings.timerSeconds * 1_000)
   const [shake, setShake] = useState(false)
   const [settingsOpen, setSettingsOpen] = useState(false)
+  const [rulesOpen, setRulesOpen] = useState(false)
 
   const strings = STRINGS[settings.lang]
   const timerRunning = settings.timerEnabled && status === 'playing'
@@ -139,6 +141,14 @@ export function App() {
           </button>
           <button
             type="button"
+            onPointerDown={() => setRulesOpen(true)}
+            aria-label={strings.rulesTitle}
+            className="grid h-9 w-9 place-items-center rounded-xl border-[1.5px] border-[#5a7df0]/50 bg-linear-to-b from-[#1d3cae] to-panel-lo text-ink-dim shadow-[0_3px_0_#0a1a5c] transition-transform duration-150 active:translate-y-[2px] active:shadow-none active:duration-0"
+          >
+            <CircleHelp className="h-4.5 w-4.5" aria-hidden="true" />
+          </button>
+          <button
+            type="button"
             onPointerDown={() => setSettingsOpen(true)}
             aria-label={strings.settings}
             className="grid h-9 w-9 place-items-center rounded-xl border-[1.5px] border-[#5a7df0]/50 bg-linear-to-b from-[#1d3cae] to-panel-lo text-ink-dim shadow-[0_3px_0_#0a1a5c] transition-transform duration-150 active:translate-y-[2px] active:shadow-none active:duration-0"
@@ -223,6 +233,8 @@ export function App() {
         onTimerChange={(timerEnabled) => updateSettings({ timerEnabled })}
         onTimerSecondsChange={changeTimerSeconds}
       />
+
+      <RulesSheet open={rulesOpen} strings={strings} onOpenChange={setRulesOpen} />
       </div>
     </div>
   )
