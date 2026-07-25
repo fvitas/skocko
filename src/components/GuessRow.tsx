@@ -52,11 +52,7 @@ export function GuessRow({ symbols, feedback, active = false, shake = false }: G
         }`}
       >
         {Array.from({ length: CODE_LENGTH }, (_, i) => (
-          <div
-            key={feedback ? `f${i}` : `e${i}`}
-            style={{ animationDelay: `${i * 90}ms` }}
-            className={`h-7 w-7 rounded-full border ${pegClass(feedback, i)}`}
-          />
+          <div key={feedback ? `f${i}` : `e${i}`} className={`h-7 w-7 rounded-full border ${pegClass(feedback, i)}`} />
         ))}
       </div>
     </div>

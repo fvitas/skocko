@@ -12,7 +12,7 @@ export function ResultPanel({ status, strings, onNewGame }: ResultPanelProps) {
     <div className="animate-rise border-t border-ink-dim/30 pt-4">
       {status === 'won' && (
         <div className="mb-4 flex items-center justify-center gap-3">
-          <SymbolIcon symbol="skocko" className="h-12 w-12 animate-bob drop-shadow-[0_3px_5px_rgba(0,0,0,0.4)]" />
+          <SymbolIcon symbol="skocko" className="h-12 w-12 drop-shadow-[0_3px_5px_rgba(0,0,0,0.4)]" />
           <h2 className="font-display text-2xl leading-tight font-bold tracking-wide text-gold">
             {strings.winTitle}
           </h2>

@@ -26,7 +26,7 @@ type SymbolIconProps = {
 export function SymbolIcon({ symbol, className }: SymbolIconProps) {
   if (symbol === 'skocko') {
     return (
-      <svg viewBox="58 -6 384 350" className={className} aria-hidden="true">
+      <svg viewBox="58 20 384 350" className={className} aria-hidden="true">
         <defs>
           <radialGradient id="skocko-head" cx="40%" cy="35%" r="65%">
             <stop offset="0%" stopColor="#ffde17" />

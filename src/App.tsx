@@ -111,7 +111,7 @@ export function App() {
 
       <header className="z-10 flex items-center justify-between px-4 pt-3.5 pb-1">
         <h1 className="flex items-center gap-2 font-display text-2xl font-bold tracking-wide [text-shadow:0_2px_0_rgba(0,0,0,0.35)]">
-          <SymbolIcon symbol="skocko" className="h-8 w-8 animate-bob drop-shadow-[0_3px_4px_rgba(0,0,0,0.4)]" />
+          <SymbolIcon symbol="skocko" className="h-8 w-8 drop-shadow-[0_3px_4px_rgba(0,0,0,0.4)]" />
           <span>
             SKO<span className="text-gold">Č</span>KO
           </span>

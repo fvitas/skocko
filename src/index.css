@@ -33,7 +33,6 @@
   --animate-peg-in: peg-in 0.3s ease-out backwards;
   --animate-rise: rise 0.35s ease-out backwards;
   --animate-shake: shake 0.4s ease-in-out;
-  --animate-bob: bob 2.6s ease-in-out infinite;
 
   @keyframes pop {
     0% {
@@ -76,15 +75,6 @@
     40%,
     80% {
       transform: translateX(7px);
-    }
-  }
-  @keyframes bob {
-    0%,
-    100% {
-      transform: translateY(0) rotate(-2deg);
-    }
-    50% {
-      transform: translateY(-4px) rotate(3deg);
     }
   }
 }
