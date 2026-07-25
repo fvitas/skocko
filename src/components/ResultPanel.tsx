@@ -1,3 +1,4 @@
+import { press } from '../press'
 import { SymbolIcon } from './SymbolIcon'
 import type { Strings } from '../i18n'
 
@@ -20,8 +21,8 @@ export function ResultPanel({ status, strings, onNewGame }: ResultPanelProps) {
       )}
       <button
         type="button"
-        onClick={onNewGame}
-        className="w-full rounded-2xl bg-linear-to-b from-gold-hi to-gold py-3.5 font-display text-lg font-semibold tracking-wide text-[#3a2500] shadow-[0_4px_0_#b8860b,inset_0_1px_0_rgba(255,255,255,0.5)] transition-transform active:translate-y-[2px]"
+        {...press(onNewGame)}
+        className="w-full rounded-2xl bg-linear-to-b from-gold-hi to-gold py-3.5 font-display text-lg font-semibold tracking-wide text-[#3a2500] shadow-[0_4px_0_#b8860b,inset_0_1px_0_rgba(255,255,255,0.5)] transition-transform duration-150 active:translate-y-[2px] active:duration-0"
       >
         {strings.newGame}
       </button>

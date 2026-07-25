@@ -34,7 +34,7 @@ export function SettingsSheet({
           <Dialog.Title className="text-lg leading-none font-bold text-ink">{strings.settings}</Dialog.Title>
           <Dialog.Close
             aria-label={strings.close}
-            className="absolute top-4 right-4 rounded-md p-1 text-ink-dim opacity-70 transition-opacity hover:opacity-100"
+            className="absolute top-4 right-4 rounded-md p-1 text-ink-dim opacity-70 transition-opacity duration-150 hover:opacity-100"
           >
             <X className="h-4 w-4" aria-hidden="true" />
           </Dialog.Close>
@@ -53,7 +53,7 @@ export function SettingsSheet({
                 <ToggleGroup.Item
                   key={code}
                   value={code}
-                  className="rounded-md px-4 py-1.5 text-sm font-medium text-ink-dim uppercase transition-colors data-[state=on]:bg-gold data-[state=on]:text-[#3a2500]"
+                  className="rounded-md px-4 py-1.5 text-sm font-medium text-ink-dim uppercase transition-colors duration-150 data-[state=on]:bg-gold data-[state=on]:text-[#3a2500]"
                 >
                   {code}
                 </ToggleGroup.Item>
@@ -72,9 +72,9 @@ export function SettingsSheet({
               id="timer-switch"
               checked={timerEnabled}
               onCheckedChange={onTimerChange}
-              className="inline-flex h-6 w-11 shrink-0 items-center rounded-full border-2 border-transparent transition-colors data-[state=checked]:bg-gold data-[state=unchecked]:bg-[#0b1d66]"
+              className="inline-flex h-6 w-11 shrink-0 items-center rounded-full border-2 border-transparent transition-colors duration-150 data-[state=checked]:bg-gold data-[state=unchecked]:bg-[#0b1d66]"
             >
-              <Switch.Thumb className="pointer-events-none block h-5 w-5 rounded-full bg-white shadow-lg transition-transform data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0" />
+              <Switch.Thumb className="pointer-events-none block h-5 w-5 rounded-full bg-white shadow-lg transition-transform duration-150 data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0" />
             </Switch.Root>
           </div>
 

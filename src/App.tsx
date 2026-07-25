@@ -8,6 +8,7 @@ import { SettingsSheet } from './components/SettingsSheet'
 import { SymbolTray } from './components/SymbolTray'
 import { CODE_LENGTH, MAX_ATTEMPTS, TIMER_SECONDS, evaluateGuess, randomSecret } from './game/logic'
 import type { GameSymbol, Guess } from './game/logic'
+import { press } from './press'
 import { STRINGS } from './i18n'
 import type { Lang } from './i18n'
 
@@ -118,9 +119,9 @@ export function App() {
         </h1>
         <button
           type="button"
-          onClick={() => setSettingsOpen(true)}
+          {...press(() => setSettingsOpen(true))}
           aria-label={strings.settings}
-          className="grid h-9 w-9 place-items-center rounded-xl border border-cell-edge bg-linear-to-b from-panel-hi to-panel-lo text-ink-dim"
+          className="grid h-9 w-9 place-items-center rounded-xl border border-cell-edge bg-linear-to-b from-panel-hi to-panel-lo text-ink-dim transition-transform duration-150 active:translate-y-[1px] active:duration-0"
         >
           <Settings className="h-4.5 w-4.5" aria-hidden="true" />
         </button>

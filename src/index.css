@@ -1,5 +1,14 @@
 @import 'tailwindcss';
 
+@layer base {
+  /* no double-tap-zoom hold on game buttons; press feedback is our own */
+  button {
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
 @theme {
   --font-display: 'Baloo 2', sans-serif;
   --font-body: 'Nunito Sans', sans-serif;
