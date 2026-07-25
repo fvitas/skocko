@@ -4,7 +4,7 @@ export function StageShards() {
     <svg
       viewBox="0 0 390 620"
       preserveAspectRatio="xMidYMid slice"
-      className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.15] mask-[radial-gradient(90%_72%_at_50%_45%,transparent_58%,black_94%)]"
+      className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.15] mask-[radial-gradient(50%_50%_at_50%_40%,transparent_50%,black_100%)]"
       aria-hidden="true"
     >
       <defs>
