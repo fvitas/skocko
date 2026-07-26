@@ -267,6 +267,7 @@ export function App() {
               confirmLabel={strings.confirm}
               clearLabel={strings.clear}
               clearText={strings.clearShort}
+              symbolNames={strings.symbolNames}
               onPick={pickSymbol}
               onClear={clearLast}
               onConfirm={confirmGuess}

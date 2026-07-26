@@ -1,6 +1,9 @@
+import type { GameSymbol } from './game/logic'
+
 export type Lang = 'sr' | 'en'
 
 export type Strings = {
+  symbolNames: Record<GameSymbol, string>
   subtitle: string
   confirm: string
   clear: string
@@ -36,6 +39,7 @@ export type Strings = {
 
 export const STRINGS: Record<Lang, Strings> = {
   sr: {
+    symbolNames: { skocko: 'Skočko', club: 'Tref', spade: 'Pik', heart: 'Srce', diamond: 'Karo', star: 'Zvezda' },
     subtitle: 'Pogodi kombinaciju od 4 znaka',
     confirm: 'POTVRDI',
     clear: 'Obriši poslednji znak',
@@ -72,6 +76,7 @@ export const STRINGS: Record<Lang, Strings> = {
     close: 'Zatvori',
   },
   en: {
+    symbolNames: { skocko: 'Skocko', club: 'Club', spade: 'Spade', heart: 'Heart', diamond: 'Diamond', star: 'Star' },
     subtitle: 'Guess the combination of 4 symbols',
     confirm: 'CHECK',
     clear: 'Undo last symbol',
