@@ -6,8 +6,6 @@ A mobile-first, Mastermind-style code-breaking game. Skočko is the game's belov
 
 <p align="center">
   <img src=".github/screenshot-game.png" alt="Gameplay — guessing the combination" width="300">
-  &nbsp;&nbsp;
-  <img src=".github/screenshot-win.png" alt="Win screen — SKOČKO!" width="300">
 </p>
 
 ## How to play
@@ -34,7 +32,6 @@ The pegs are sorted (reds first), so they tell you *how many* you got — not *w
 - [React 19](https://react.dev) + [TypeScript](https://www.typescriptlang.org), built with [Vite](https://vite.dev)
 - [Tailwind CSS 4](https://tailwindcss.com) for styling
 - [Radix UI](https://www.radix-ui.com) + [vaul](https://vaul.emilkowal.ski) for dialogs and sheets
-- [html-to-image](https://github.com/bubkoo/html-to-image) for the shareable board card
 - [Vitest](https://vitest.dev) + [Testing Library](https://testing-library.com) for tests
 
 ## Development
