@@ -1,0 +1,17 @@
+{
+  "id": "/",
+  "name": "Skočko — igra pogađanja kombinacije",
+  "short_name": "Skočko",
+  "description": "Mastermind igra: pogodi skrivenu kombinaciju od 4 znaka u 6 pokušaja.",
+  "lang": "sr",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0e2a8f",
+  "background_color": "#0e2a8f",
+  "icons": [
+    { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" },
+    { "src": "/icon-mask.png", "type": "image/png", "sizes": "512x512", "purpose": "maskable" }
+  ]
+}
