@@ -170,7 +170,7 @@ export function App() {
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-[radial-gradient(80%_60%_at_50%_100%,rgba(255,201,60,0.09),transparent_70%)]" />
       <div className="relative mx-auto flex h-dvh max-w-md flex-col">
 
-      <header className="z-10 flex items-center justify-between px-4 pt-3.5 pb-1">
+      <header className="z-10 flex items-center justify-between px-4 pt-[calc(14px+env(safe-area-inset-top))] pb-1">
         <h1 aria-label="SKOČKO" className="flex items-center gap-[3px]">
           <span
             aria-hidden="true"
