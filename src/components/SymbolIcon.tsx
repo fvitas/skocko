@@ -45,8 +45,8 @@ export function SymbolIcon({ symbol, className }: SymbolIconProps) {
         <path d="M235 125C215 70 160 25 135 5" fill="none" stroke="#0d1b2a" strokeWidth="9" strokeLinecap="round" />
         <path d="M265 125C285 70 340 25 365 5" fill="none" stroke="#0d1b2a" strokeWidth="9" strokeLinecap="round" />
         <ellipse cx="250" cy="240" rx="145" ry="95" fill={`url(#${id}-head)`} stroke="#b77900" strokeWidth="4" />
-        <path d="M150 115C165 80 210 75 225 110" fill="none" stroke="#003366" strokeWidth="8" strokeLinecap="round" />
-        <path d="M350 115C335 80 290 75 275 110" fill="none" stroke="#003366" strokeWidth="8" strokeLinecap="round" />
+        <path d="M150 115C165 80 210 75 225 110" fill="none" stroke="#0d1b2a" strokeWidth="8" strokeLinecap="round" />
+        <path d="M350 115C335 80 290 75 275 110" fill="none" stroke="#0d1b2a" strokeWidth="8" strokeLinecap="round" />
         <ellipse cx="190" cy="165" rx="30" ry="45" fill="#fff" />
         <ellipse cx="310" cy="165" rx="30" ry="45" fill="#fff" />
         <ellipse cx="195" cy="170" rx="16" ry="28" fill="#0f172a" />
