@@ -1,6 +1,6 @@
 # Skočko
 
-A mobile-first remake of **Skočko** — the Mastermind-style code-breaking game from *TV Slagalica*, the long-running quiz show on Serbian national television (RTS). Skočko is the show's beloved mascot, and one of the six symbols you'll be guessing.
+A mobile-first, Mastermind-style code-breaking game. Skočko is the game's beloved mascot — and one of the six symbols you'll be guessing.
 
 **▶ Play it live: [skocko-game.vercel.app](https://skocko-game.vercel.app)**
 
@@ -24,7 +24,7 @@ The pegs are sorted (reds first), so they tell you *how many* you got — not *w
 ## Features
 
 - **Bilingual** — Serbian and English, switchable in settings
-- **Timer mode** — limited time per game, just like on the show
+- **Timer mode** — limited time per game for extra pressure
 - **Share your result** — the finished board is rendered to an image and shared straight to the X app on mobile, or via a download/post dialog on desktop
 - **Installable PWA** — add it to your home screen for a fullscreen, app-like experience with iPhone haptics
 - **Accessible** — labelled controls, screen-reader-friendly symbol tray
