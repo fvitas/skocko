@@ -94,7 +94,8 @@ export async function shareBoardImage(card: Blob | Promise<Blob>, text: string, 
   const touch = matchMedia('(hover: none) and (pointer: coarse)').matches
   const blob = await card
   const file = new File([blob], 'skocko.png', { type: 'image/png' })
-  const shareData: ShareData = { files: [file], text, url }
+  // url baked into text — the x app drops the separate url member when files are attached
+  const shareData: ShareData = { files: [file], text: `${text} ${url}` }
 
   // desktop chrome/safari also pass canShare, but their os share sheets can't post to X
   if (touch && !!navigator.canShare && navigator.canShare(shareData)) {
