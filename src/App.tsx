@@ -1,17 +1,19 @@
 import { CircleHelp, Dices, Settings } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { GuessRow } from './components/GuessRow'
 import { SymbolIcon } from './components/SymbolIcon'
 import { ResultPanel } from './components/ResultPanel'
 import { SolutionRow } from './components/SolutionRow'
 import { RulesSheet } from './components/RulesSheet'
 import { SettingsSheet } from './components/SettingsSheet'
+import { ShareSheet } from './components/ShareSheet'
 import { StageShards } from './components/StageShards'
 import { SymbolTray } from './components/SymbolTray'
 import { CODE_LENGTH, DEFAULT_TIMER_SECONDS, MAX_ATTEMPTS, TIMER_OPTIONS, evaluateGuess, randomSecret } from './game/logic'
 import type { GameSymbol, Guess, TimerSeconds } from './game/logic'
 import { STRINGS } from './i18n'
 import type { Lang } from './i18n'
+import { captureBoardCard, shareBoardImage } from './share'
 
 type GameStatus = 'playing' | 'won' | 'lost' | 'timeout'
 
@@ -52,6 +54,10 @@ export function App() {
   const [shake, setShake] = useState(false)
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [rulesOpen, setRulesOpen] = useState(false)
+  const [shareOpen, setShareOpen] = useState(false)
+  const [shareCard, setShareCard] = useState<Blob | null>(null)
+  const boardRef = useRef<HTMLDivElement>(null)
+  const shareCardRef = useRef<Promise<Blob> | null>(null)
 
   const strings = STRINGS[settings.lang]
   const timerRunning = settings.timerEnabled && status === 'playing'
@@ -67,6 +73,20 @@ export function App() {
   useEffect(() => {
     if (timerRunning && remainingMs === 0) setStatus('timeout')
   }, [timerRunning, remainingMs])
+
+  // capture the share card as soon as the game ends — doing it on tap is too
+  // slow on phones and navigator.share loses the tap's user activation
+  useEffect(() => {
+    if (status === 'playing' || !boardRef.current) {
+      shareCardRef.current = null
+      return
+    }
+    const card = captureBoardCard(boardRef.current)
+    card.catch(() => {
+      if (shareCardRef.current === card) shareCardRef.current = null
+    })
+    shareCardRef.current = card
+  }, [status])
 
   function updateSettings(patch: Partial<Settings>) {
     const next = { ...settings, ...patch }
@@ -111,6 +131,17 @@ export function App() {
       setStatus('won')
     } else if (guesses.length + 1 >= MAX_ATTEMPTS) {
       setStatus('lost')
+    }
+  }
+
+  async function shareResult() {
+    if (!boardRef.current) return
+    shareCardRef.current ??= captureBoardCard(boardRef.current)
+    const text = status === 'won' ? strings.shareWon : strings.shareLost
+    const outcome = await shareBoardImage(shareCardRef.current, text, location.origin)
+    if (outcome === 'modal') {
+      setShareCard(await shareCardRef.current)
+      setShareOpen(true)
     }
   }
 
@@ -171,7 +202,7 @@ export function App() {
       <p className="z-10 px-4 pb-1 text-[13px] font-bold text-ink-dim">{strings.subtitle}</p>
 
       <main className="z-10 flex flex-1 items-center px-4 py-2">
-        <div className="flex w-full flex-col gap-[7px]">
+        <div ref={boardRef} className="flex w-full flex-col gap-[7px]">
           <div className="flex items-stretch gap-3">
             {settings.timerEnabled && (
               <div className="relative w-2.5 overflow-hidden rounded-full bg-[#081444] shadow-[inset_0_2px_4px_rgba(0,0,0,0.5)]">
@@ -227,7 +258,7 @@ export function App() {
           </div>
           {status !== 'playing' && (
             <div className="absolute inset-0 flex flex-col justify-end">
-              <ResultPanel status={status} strings={strings} onNewGame={startNewGame} />
+              <ResultPanel status={status} strings={strings} onNewGame={startNewGame} onShare={shareResult} />
             </div>
           )}
         </div>
@@ -246,6 +277,15 @@ export function App() {
       />
 
       <RulesSheet open={rulesOpen} strings={strings} onOpenChange={setRulesOpen} />
+
+      <ShareSheet
+        open={shareOpen}
+        card={shareCard}
+        text={status === 'won' ? strings.shareWon : strings.shareLost}
+        url={location.origin}
+        strings={strings}
+        onOpenChange={setShareOpen}
+      />
       </div>
     </div>
   )

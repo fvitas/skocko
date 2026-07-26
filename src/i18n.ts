@@ -6,6 +6,12 @@ export type Strings = {
   clear: string
   clearShort: string
   newGame: string
+  share: string
+  shareTitle: string
+  shareDownload: string
+  sharePost: string
+  shareWon: string
+  shareLost: string
   winTitle: string
   solution: string
   settings: string
@@ -33,6 +39,12 @@ export const STRINGS: Record<Lang, Strings> = {
     clear: 'Obriši poslednji znak',
     clearShort: 'OBRIŠI',
     newGame: 'NOVA IGRA',
+    share: 'PODELI',
+    shareTitle: 'Podeli',
+    shareDownload: 'PREUZMI',
+    sharePost: 'OBJAVI',
+    shareWon: 'Rešio sam ga! 🎯',
+    shareLost: 'Nisam mogao da ga rešim…',
     winTitle: 'SKOČKO!',
     solution: 'Rešenje',
     settings: 'Podešavanja',
@@ -61,6 +73,12 @@ export const STRINGS: Record<Lang, Strings> = {
     clear: 'Undo last symbol',
     clearShort: 'UNDO',
     newGame: 'NEW GAME',
+    share: 'SHARE',
+    shareTitle: 'Share',
+    shareDownload: 'DOWNLOAD',
+    sharePost: 'POST',
+    shareWon: 'I solved it! 🎯',
+    shareLost: "I couldn't solve it this time…",
     winTitle: 'SKOČKO!',
     solution: 'Solution',
     settings: 'Settings',

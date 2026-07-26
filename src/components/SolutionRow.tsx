@@ -12,7 +12,7 @@ export function SolutionRow({ secret, label }: SolutionRowProps) {
       {secret.map((symbol, i) => (
         <div
           key={i}
-          className="grid aspect-square place-items-center rounded-2xl border-[1.5px] border-gold bg-linear-to-b from-cell-hi to-[#0e2270] shadow-[inset_0_2px_6px_rgba(0,0,0,0.3),0_0_12px_rgba(255,201,60,0.25)]"
+          className="grid aspect-square place-items-center rounded-2xl border-[1.5px] border-gold bg-linear-to-b from-cell-hi to-[#0e2270] shadow-[inset_0_2px_6px_rgba(0,0,0,0.3),0_0_12px_rgba(255,201,60,0.25)] in-data-capturing:shadow-[inset_0_2px_6px_rgba(0,0,0,0.3)]"
         >
           <SymbolIcon symbol={symbol} className="h-[58%] w-[58%] animate-pop drop-shadow-[0_2px_2px_rgba(0,0,0,0.4)]" />
         </div>
