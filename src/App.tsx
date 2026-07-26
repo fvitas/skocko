@@ -11,6 +11,7 @@ import { StageShards } from './components/StageShards'
 import { SymbolTray } from './components/SymbolTray'
 import { CODE_LENGTH, DEFAULT_TIMER_SECONDS, MAX_ATTEMPTS, TIMER_OPTIONS, evaluateGuess, randomSecret } from './game/logic'
 import type { GameSymbol, Guess, TimerSeconds } from './game/logic'
+import { installIphoneHaptics, vibrate } from './haptics'
 import { STRINGS } from './i18n'
 import type { Lang } from './i18n'
 import { captureBoardCard, shareBoardImage } from './share'
@@ -73,6 +74,21 @@ export function App() {
   useEffect(() => {
     if (timerRunning && remainingMs === 0) setStatus('timeout')
   }, [timerRunning, remainingMs])
+
+  // one global listener instead of wiring every button — covers header, tray,
+  // result panel and radix controls rendered in portals
+  useEffect(() => {
+    function handlePointerDown(event: PointerEvent) {
+      if (event.pointerType !== 'touch') return
+      if (event.target instanceof Element && event.target.closest('button')) vibrate()
+    }
+    document.addEventListener('pointerdown', handlePointerDown)
+    const uninstallHaptics = installIphoneHaptics()
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown)
+      uninstallHaptics?.()
+    }
+  }, [])
 
   // capture the share card as soon as the game ends — doing it on tap is too
   // slow on phones and navigator.share loses the tap's user activation
