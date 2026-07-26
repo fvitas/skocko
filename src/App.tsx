@@ -235,7 +235,7 @@ export function App() {
                 const guess = guesses[i]
                 const isActive = status === 'playing' && i === guesses.length
                 return (
-                  <div key={i} style={{ animationDelay: `${i * 55}ms` }} className="animate-rise">
+                  <div key={i}>
                     <GuessRow
                       symbols={guess ? guess.symbols : isActive ? current : []}
                       feedback={guess?.feedback}
@@ -259,7 +259,7 @@ export function App() {
         </div>
       </main>
 
-      <div style={{ animationDelay: '360ms' }} className="z-10 animate-rise px-4 pb-[calc(16px+env(safe-area-inset-bottom))]">
+      <div className="z-10 px-4 pb-[calc(16px+env(safe-area-inset-bottom))]">
         <div className="relative">
           <div className={status === 'playing' ? undefined : 'invisible'}>
             <SymbolTray
