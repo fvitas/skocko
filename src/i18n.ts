@@ -13,6 +13,8 @@ export type Strings = {
   shareWon: string
   shareLost: string
   winTitle: string
+  loseTitle: string
+  timeoutTitle: string
   solution: string
   settings: string
   timer: string
@@ -46,6 +48,8 @@ export const STRINGS: Record<Lang, Strings> = {
     shareWon: 'Rešio sam ga! 🎯',
     shareLost: 'Nisam mogao da ga rešim…',
     winTitle: 'SKOČKO!',
+    loseTitle: 'VIŠE SREĆE DRUGI PUT',
+    timeoutTitle: 'VREME JE ISTEKLO',
     solution: 'Rešenje',
     settings: 'Podešavanja',
     timer: 'Tajmer',
@@ -80,6 +84,8 @@ export const STRINGS: Record<Lang, Strings> = {
     shareWon: 'I solved it! 🎯',
     shareLost: "I couldn't solve it this time…",
     winTitle: 'SKOČKO!',
+    loseTitle: 'BETTER LUCK NEXT TIME',
+    timeoutTitle: "TIME'S UP",
     solution: 'Solution',
     settings: 'Settings',
     timer: 'Timer',

@@ -25,13 +25,17 @@ export function ResultPanel({ status, strings, onNewGame, onShare }: ResultPanel
 
   return (
     <div className="animate-rise border-t border-ink-dim/30 pt-4">
-      {status === 'won' && (
+      {status === 'won' ? (
         <div className="mb-4 flex items-center justify-center gap-3">
           <SymbolIcon symbol="skocko" className="h-12 w-12 drop-shadow-[0_3px_5px_rgba(0,0,0,0.4)]" />
           <h2 className="font-display text-2xl leading-tight font-bold tracking-wide text-gold">
             {strings.winTitle}
           </h2>
         </div>
+      ) : (
+        <h2 className="mb-4 text-center font-display text-2xl leading-tight font-bold tracking-wide text-ink-dim">
+          {status === 'timeout' ? strings.timeoutTitle : strings.loseTitle}
+        </h2>
       )}
       <div className="grid grid-cols-[1fr_1.4fr] gap-2">
         <button
