@@ -64,3 +64,20 @@ describe('randomSecret', () => {
     }
   })
 })
+
+// hardcoded peg counts in RulesSheet examples — pinned here so the tutorial can't drift from the engine
+describe('rules sheet examples', () => {
+  it('sorted-pegs example scores 2 red 0 yellow', () => {
+    expect(evaluateGuess(g('heart', 'spade', 'club', 'diamond'), g('star', 'star', 'club', 'diamond'))).toEqual({
+      red: 2,
+      yellow: 0,
+    })
+  })
+
+  it('counted-once example scores 1 red 0 yellow', () => {
+    expect(evaluateGuess(g('heart', 'spade', 'club', 'diamond'), g('heart', 'heart', 'heart', 'heart'))).toEqual({
+      red: 1,
+      yellow: 0,
+    })
+  })
+})
