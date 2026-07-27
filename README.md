@@ -5,9 +5,9 @@ A mobile-first, Mastermind-style code-breaking game. Skočko is the game's belov
 **▶ Play it live: [skocko-game.vercel.app](https://skocko-game.vercel.app)**
 
 <p align="center">
-  <img src=".github/screenshot-iphone.png" alt="Gameplay on iPhone" width="200">
+  <img src=".github/screenshot-iphone.png" alt="Skočko gameplay on iPhone" width="200">
   &nbsp;
-  <img src=".github/screenshot-desktop.png" alt="Gameplay on desktop" width="620">
+  <img src=".github/screenshot-desktop.png" alt="Skočko gameplay on a MacBook Pro" width="620">
 </p>
 
 ## How to play
