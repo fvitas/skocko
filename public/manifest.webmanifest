@@ -1,9 +1,9 @@
 {
   "id": "/",
-  "name": "Skočko — igra pogađanja kombinacije",
+  "name": "Skočko — combination guessing game",
   "short_name": "Skočko",
-  "description": "Mastermind igra: pogodi skrivenu kombinaciju od 4 znaka u 6 pokušaja.",
-  "lang": "sr",
+  "description": "Mastermind game: guess the hidden combination of 4 symbols in 6 attempts.",
+  "lang": "en",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",

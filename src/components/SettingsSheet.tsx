@@ -40,7 +40,7 @@ export function SettingsSheet({
           }}
           className="inline-flex rounded-lg border border-white/10 bg-[#0b1d66] p-1"
         >
-          {(['sr', 'en'] as const).map((code) => (
+          {(['en', 'sr'] as const).map((code) => (
             <ToggleGroup.Item
               key={code}
               value={code}

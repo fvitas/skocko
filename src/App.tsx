@@ -28,7 +28,7 @@ const SETTINGS_KEY = 'skocko-settings'
 const TIMER_TICK_MS = 200
 
 function readSettings(): Settings {
-  const fallback: Settings = { lang: 'sr', timerEnabled: false, timerSeconds: DEFAULT_TIMER_SECONDS }
+  const fallback: Settings = { lang: 'en', timerEnabled: false, timerSeconds: DEFAULT_TIMER_SECONDS }
   try {
     const raw = localStorage.getItem(SETTINGS_KEY)
     const settings = raw ? { ...fallback, ...(JSON.parse(raw) as Partial<Settings>) } : fallback
