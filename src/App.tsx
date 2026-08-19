@@ -164,11 +164,11 @@ export function App() {
   const timerRatio = remainingMs / (settings.timerSeconds * 1_000)
 
   return (
-    <div className="relative min-h-dvh overflow-hidden bg-[radial-gradient(120%_80%_at_50%_-10%,#1a47d6,#0e2a8f_55%,#0a1b5e)] font-body text-ink">
+    <div className="relative h-(--app-height) overflow-hidden bg-[radial-gradient(120%_80%_at_50%_-10%,#1a47d6,#0e2a8f_55%,#0a1b5e)] font-body text-ink">
       <StageShards />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_100%_at_50%_110%,transparent_55%,rgba(2,6,40,0.45))]" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-[radial-gradient(80%_60%_at_50%_100%,rgba(255,201,60,0.09),transparent_70%)]" />
-      <div className="relative mx-auto flex h-dvh max-w-md flex-col">
+      <div className="relative mx-auto flex h-(--app-height) max-w-md flex-col">
 
       <header className="z-10 flex items-center justify-between px-4 pt-[calc(14px+env(safe-area-inset-top))] pb-1">
         <h1 aria-label="SKOČKO" className="flex items-center gap-[3px]">

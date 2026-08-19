@@ -30,7 +30,7 @@ function trayButton(symbol: GameSymbol): HTMLButtonElement {
 }
 
 function confirmButton() {
-  return screen.getByRole('button', { name: 'POTVRDI' })
+  return screen.getByRole('button', { name: 'CHECK' })
 }
 
 // symbols rendered on the board — the header/tray/result icons live outside <main>
@@ -49,21 +49,21 @@ function submitGuess(symbols: GameSymbol[]) {
 const SECRET = Array.from({ length: 4 }, () => 'skocko' as GameSymbol)
 const WRONG = Array.from({ length: 4 }, () => 'club' as GameSymbol)
 
-// the header dice button is also named NOVA IGRA — the PODELI share button only exists in the result panel
+// the header dice button is also named NEW GAME — the SHARE button only exists in the result panel
 function resultPanelOpen() {
-  return screen.queryByText('PODELI') !== null
+  return screen.queryByText('SHARE') !== null
 }
 
-const END_TITLES = { won: 'SKOČKO!', lost: 'VIŠE SREĆE DRUGI PUT', timeout: 'VREME JE ISTEKLO' }
+const END_TITLES = { won: 'SKOČKO!', lost: 'BETTER LUCK NEXT TIME', timeout: "TIME'S UP" }
 
 function expectGameOver(outcome: keyof typeof END_TITLES) {
   expect(resultPanelOpen()).toBe(true)
-  expect(screen.getByText('Rešenje')).toBeTruthy()
+  expect(screen.getByText('Solution')).toBeTruthy()
   expect(screen.getByText(END_TITLES[outcome])).toBeTruthy()
 }
 
 function tapNewGame() {
-  const [headerButton] = screen.getAllByRole('button', { name: 'NOVA IGRA' })
+  const [headerButton] = screen.getAllByRole('button', { name: 'NEW GAME' })
   fireEvent.pointerDown(headerButton)
 }
 
@@ -85,7 +85,7 @@ describe('game state machine', () => {
     expect(boardSymbolCount()).toBe(0)
     expect(confirmButton()).toBeTruthy()
     expect(resultPanelOpen()).toBe(false)
-    expect(screen.queryByText('Rešenje')).toBeNull()
+    expect(screen.queryByText('Solution')).toBeNull()
   })
 
   it('caps the current guess at 4 symbols', () => {
@@ -98,7 +98,7 @@ describe('game state machine', () => {
     render(<App />)
     fireEvent.pointerDown(trayButton('heart'))
     fireEvent.pointerDown(trayButton('star'))
-    fireEvent.pointerDown(screen.getByRole('button', { name: 'Obriši poslednji znak' }))
+    fireEvent.pointerDown(screen.getByRole('button', { name: 'Undo last symbol' }))
     expect(boardSymbolCount()).toBe(1)
   })
 
@@ -107,7 +107,7 @@ describe('game state machine', () => {
     fireEvent.pointerDown(trayButton('heart'))
     fireEvent.pointerDown(confirmButton())
     expect(document.querySelector('.animate-shake')).toBeTruthy()
-    expect(screen.queryByText('Rešenje')).toBeNull()
+    expect(screen.queryByText('Solution')).toBeNull()
     expect(boardSymbolCount()).toBe(1)
   })
 
@@ -145,7 +145,7 @@ describe('game state machine', () => {
     submitGuess(SECRET)
     tapNewGame()
     expect(screen.queryByText('SKOČKO!')).toBeNull()
-    expect(screen.queryByText('Rešenje')).toBeNull()
+    expect(screen.queryByText('Solution')).toBeNull()
     expect(boardSymbolCount()).toBe(0)
     expect(confirmButton().closest('.invisible')).toBeNull()
   })
